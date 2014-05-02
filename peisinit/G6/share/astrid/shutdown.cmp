@@ -1,0 +1,23 @@
+# shutdown.cmp
+# When activated this component will turn off the onboard PC on astrid
+Name=Shutdown
+Id=+99
+Exec='/sbin/shutdown -h now'
+ExtraArguments=''
+InitState=off
+SpawnDelay=3.0
+semantics=
+
+'(
+
+  \"NoType\"
+  \"NoName\"
+  \"NoDesc\"
+  ( )
+  ( )
+  ( )
+  ( )
+  ( )
+
+)'
+

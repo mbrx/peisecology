@@ -1,0 +1,8 @@
+# peiscsvision.cmp
+# Starts a vision server with some default parameters
+Name=peiscsvision
+Id=+1
+Exec='/usr/local/bin/peiscsvision $PEISINIT -c /usr/local/share/peiscsvision/peiscsvision.cfg'
+InitState=off
+SpawnDelay=3.0
+semantics='(<i am a happy little vision server>)'

@@ -1,0 +1,9 @@
+# etridoorproxy
+# Naive component to proxy the door
+
+Name=etridoorproxy
+Id=+6
+Exec='/usr/local/bin/etridoorproxy.lisp $PEISINIT'
+InitState=on
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

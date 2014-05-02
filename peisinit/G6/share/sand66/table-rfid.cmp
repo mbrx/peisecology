@@ -1,0 +1,9 @@
+# table-rfid.cmp
+# RFID reader connected to kitchen table
+Name=TableRFID
+Id=+10
+Exec='peisrfid --device /dev/ttyS0 $PEISINIT --peis-set-tuple myposition kitchen-table'
+ExtraArguments=''
+InitState=on
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

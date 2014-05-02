@@ -1,0 +1,22 @@
+# Peiscam0.cmp
+# Peiscam connected to /dev/video0
+Name=frontcamera
+Id=+10
+Exec='peiscam $PEISINIT --peis-name frontcamera'
+ExtraArguments=' -c /dev/video0 -f 5 -w 640 -h 480 -q 80 -x 0 -i 5 --rotate-180 --bgr'
+InitState=off
+SpawnDelay=3.0
+Semantics=
+
+'(
+
+  \"NoType\"
+  \"NoName\"
+  \"NoDesc\"
+  ( )
+  ( )
+  ( )
+  ( )
+  ( )
+
+)'

@@ -1,0 +1,9 @@
+peisplayer
+
+Connects Player/Stage to the PEIS environment by providing
+tuples that reflect all interfaces that are given in a configuration
+file. By reading from tuple you get the latest sensor reading from
+the corresponding interface and by writing to tuples you send request
+on the given interface. 
+
+

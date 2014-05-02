@@ -1,0 +1,22 @@
+# peispantilt.cmp
+# Controls the pan/tilt unit via Aria. 
+Name=peispantilt
+Id=+15
+Exec='peispantilt $PEISINIT --peis-name peispantilt'
+ExtraArguments='--set-tuple cameratouse 4210'
+InitState=off
+SpawnDelay=3.0
+Semantics=
+
+'(
+
+  \"NoType\"
+  \"NoName\"
+  \"NoDesc\"
+  ( )
+  ( )
+  ( )
+  ( )
+  ( )
+
+)'

@@ -1,0 +1,9 @@
+# Example.cmp
+# This is a small example component
+Name=ExampleComponent
+Id=+100
+Exec='peismaster $PEISINIT'
+ExtraArguments='--peis-name example'
+InitState=off
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

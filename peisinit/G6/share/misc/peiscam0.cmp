@@ -1,0 +1,8 @@
+# Peiscam0.cmp
+# Peiscam connected to /dev/video0
+Name=peiscam0
+Id=+10
+Exec='peiscam $PEISINIT -c /dev/video0 -f 5 -w 320 -h 240 -q 80 --bgr'
+InitState=off
+SpawnDelay=3.0
+Semantics='(<semantic description here>)'

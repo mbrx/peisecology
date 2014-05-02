@@ -1,0 +1,21 @@
+# PlayerSonars.cmp
+Name=playersonars
+Id=+21
+Exec=''
+ExtraArguments=''
+InitState=off
+SpawnDelay=1.5
+Semantics=
+
+'(
+
+  \"file:/PeisComponentsHierarchy.owl;#sonar_array\"
+  \"playersonars\"
+  \"Sonar readings from the Player instance on Astrid.\"
+  ( (\"file:/Objects.owl;#Support\" \"ASTRID\") )
+  ( )
+  ( )
+  ( )
+  ( (\"sonar.pose\" \"file:/Data.owl;#PlanarPoseB\") (\"sonar.range\" \"file:/Data.owl;#Distance\") )
+
+)'

@@ -1,0 +1,8 @@
+# peisdal
+# Start the robot server "peisdal"
+Name=peisdal
+Id=+1
+Exec='/usr/local/bin/peisdal $PEISINIT'
+InitState=off
+SpawnDelay=3.0
+semantics='(<put semantic description here>)'

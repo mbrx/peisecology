@@ -1,0 +1,5 @@
+Place copies of all usesfull component description files in 
+subdirectories here. Eg. all the component description files for 
+the robot pippi should appear under:
+
+svnroot/peistools/peisinit/trunk/share/pippi/

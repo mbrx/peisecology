@@ -1,0 +1,8 @@
+# peiscsvision.cmp
+# Runs the peiscsvision system
+Name=peiscsvision
+Id=+1
+Exec='cd /tmp;/usr/local/bin/peiscsvision $PEISINIT -c /usr/local/share/peiscsvision/peiscsvision.cfg'
+InitState=off
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

@@ -1,0 +1,21 @@
+# peisaria.cmp
+# Bridge to ARIA/ARNL
+Name=peisaria
+Id=+20
+Exec='peisaria $PEISINIT --start-guiserver'
+InitState=off
+SpawnDelay=3.0
+Semantics=
+
+'(
+
+  \"NoType\"
+  \"NoName\"
+  \"NoDesc\"
+  ( )
+  ( )
+  ( )
+  ( )
+  ( )
+
+)'

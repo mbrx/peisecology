@@ -1,0 +1,9 @@
+# etrilampproxy
+# Naive component to proxy the lamp
+
+Name=etrilampproxy
+Id=+7
+Exec='/usr/local/bin/etrilampproxy.lisp $PEISINIT'
+InitState=off
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

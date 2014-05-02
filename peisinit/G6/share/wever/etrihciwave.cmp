@@ -1,0 +1,8 @@
+# etrihciwave
+# Performs a text-to-speech service playing the result on Wever
+Name=etrihciwave
+Id=+4
+Exec='/usr/local/bin/etrihciwave $PEISINIT'
+InitState=off
+SpawnDelay=3.0
+semantics='(<put semantic description here>)'

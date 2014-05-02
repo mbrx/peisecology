@@ -1,0 +1,8 @@
+# etrihomeauto
+# Starts the link to the home automation system
+Name=etrihomeauto
+Id=+2
+Exec='/usr/local/bin/etrihomeauto $PEISINIT'
+InitState=off
+SpawnDelay=3.0
+semantics='(<put semantic description here>)'

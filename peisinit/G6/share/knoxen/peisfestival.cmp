@@ -1,0 +1,8 @@
+# peisfestival.cmp
+# Provides a text to speech service, outputting on local speakers
+Name=peisfestival
+Id=+4
+Exec='/usr/local/bin/peisfestival $PEISINIT'
+InitState=off
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

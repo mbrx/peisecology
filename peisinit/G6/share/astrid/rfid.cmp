@@ -1,0 +1,21 @@
+# rfid.cmp
+# Interface to the rfid reader
+Name=rfid
+Id=+30
+Exec='peisrfid $PEISINIT --device /dev/ttyS3'
+InitState=off
+SpawnDelay=3.0
+Semantics=
+
+'(
+
+  \"NoType\"
+  \"NoName\"
+  \"NoDesc\"
+  ( )
+  ( )
+  ( )
+  ( )
+  ( )
+
+)'

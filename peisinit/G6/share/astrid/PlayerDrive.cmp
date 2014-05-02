@@ -1,0 +1,21 @@
+# PlayerDrive.cmp
+Name=playerdrive
+Id=+21
+Exec='peisplayer $PEISINIT'
+ExtraArguments='--start-player /usr/local/player/peoplegirl2-no-laser.cfg --tries 24 --player-port 6665'
+InitState=off
+SpawnDelay=1.0
+Semantics=
+
+'(
+
+  \"file:/PeisComponentsHierarchy.owl;#wheel_drive\"
+  \"playerdrive\"
+  \"Motion drive from the Player instance on Astrid.\"
+  ( (\"file:/Objects.owl;#Support\" \"ASTRID\") )
+  ( )
+  ( )
+  ( (\"position.0.mi-setvel\" \"file:/Data.owl;#PlanarVel\") ) 
+  ( )
+
+)'

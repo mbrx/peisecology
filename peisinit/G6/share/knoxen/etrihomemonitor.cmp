@@ -1,0 +1,8 @@
+# etrihomemonitor.cmp
+# Naive component to monitor plant health and open/close the curtains as needed.
+Name=etrihomemonitor
+Id=+5
+Exec='/usr/local/bin/etrihomemonitor.lisp $PEISINIT'
+InitState=on
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

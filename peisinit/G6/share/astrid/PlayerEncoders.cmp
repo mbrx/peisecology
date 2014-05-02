@@ -1,0 +1,21 @@
+# PlayerEncoders.cmp
+Name=playerencodders
+Id=+21
+Exec=''
+ExtraArguments=''
+InitState=off
+SpawnDelay=1.5
+Semantics=
+
+'(
+
+  \"file:/PeisComponentsHierarchy.owl;#encoder\"
+  \"playerencodders\"
+  \"Encoder readings from the Player instance on Astrid.\"
+  ( (\"file:/Objects.owl;#Support\" \"ASTRID\") )
+  ( )
+  ( )
+  ( )
+  ( (\"position.0.odopos\" \"file:/Data.owl;#EncoderReading\") )
+
+)'

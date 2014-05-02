@@ -1,0 +1,8 @@
+# camtest.cmp
+Name=camtest
+Id=+25
+Exec='./camtest $PEISINIT'
+ExtraArguments=''
+InitState=on
+SpawnDelay=3.0
+semantics= '(<none>)'

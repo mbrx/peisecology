@@ -1,0 +1,8 @@
+# peiscam
+# Start the robot camera using peiscam
+Name=peiscam
+Id=+12
+Exec='/usr/local/bin/peiscam $PEISINIT -c /dev/video0 --bgr -f 5 -l 1 -x 1 -w 320 -h 240'
+InitState=off
+SpawnDelay=3.0
+semantics='(<put semantic description here>)'

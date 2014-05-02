@@ -1,0 +1,8 @@
+# networkbridge.cmp
+# Use a peismaster to bridge the two PEIS networks 
+Name=networkbridge
+Id=+2
+Exec='/usr/local/bin/peismaster $PEISINIT --peis-connect tcp://wever:8000'
+InitState=on
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

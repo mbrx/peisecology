@@ -1,0 +1,8 @@
+# etrisensornetwork.cmp
+# Connects to the sensor network at ETRI
+Name=etrisensornetwork
+Id=+3
+Exec='/usr/local/bin/etrisensornetwork $PEISINIT'
+InitState=off
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

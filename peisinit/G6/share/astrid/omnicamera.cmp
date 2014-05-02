@@ -1,0 +1,22 @@
+# omnicam.cmp
+# Peiscam connected to /dev/video1
+Name=omnicamera
+Id=+11
+Exec='peiscam $PEISINIT --peis-name omnicam'
+ExtraArguments=' -c /dev/video1 -f 30 -w 640 -h 480 -q 80 -x 0 -i 10 --bgr'
+InitState=off
+SpawnDelay=3.0
+Semantics=
+
+'(
+
+  \"NoType\"
+  \"NoName\"
+  \"NoDesc\"
+  ( )
+  ( )
+  ( )
+  ( )
+  ( )
+
+)'

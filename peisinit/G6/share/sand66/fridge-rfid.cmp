@@ -1,0 +1,9 @@
+# fridge-rfid.cmp
+# RFID reader connected to refrigerator
+Name=FridgeRFID
+Id=+11
+Exec='peisrfid --device /dev/ttyUSB0 $PEISINIT --peis-set-tuple myposition kitchen-fridge'
+ExtraArguments=''
+InitState=on
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

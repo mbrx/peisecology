@@ -1,0 +1,3 @@
+Treat information about connections in a more consistent way. Eg, always assign unique numbers that are not reused!
+
+Use appendTuple operations for making changes to stdout, stderr

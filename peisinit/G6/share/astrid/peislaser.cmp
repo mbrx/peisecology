@@ -1,0 +1,22 @@
+# peislaser.cmp
+# Control the hardware of the robot
+Name=peislaser
+Id=+22
+Exec='peisplayer $PEISINIT'
+ExtraArguments='--start-player /usr/local/player/peoplegirl2-laser.cfg --tries 24 --player-port 6666 --peis-name peislaser'
+InitState=off
+SpawnDelay=10.0
+Semantics=
+
+'(
+
+  \"NoType\"
+  \"NoName\"
+  \"NoDesc\"
+  ( )
+  ( )
+  ( )
+  ( )
+  ( )
+
+)'

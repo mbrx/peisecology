@@ -1,0 +1,9 @@
+# fridge-door.cmp
+# Controls the door connected to the refrigerator
+Name=FridgeDoor
+Id=+20
+Exec='fridgeDoor $PEISINIT --peis-set-tuple myposition kitchen-table'
+ExtraArguments=''
+InitState=on
+SpawnDelay=3.0
+semantics='(<semantic description here>)'
