@@ -1,0 +1,29 @@
+To install run:
+
+0. Edit the "LISP_PREFIX" variable in the Makefile
+1. make
+2. sudo make install
+
+To create a new lisp program:
+
+1. Start by copying "template.lisp" to some suitable place and just go
+   from there.
+
+How to use this PEIS interface from your other LISP programs: 
+
+0. First compile and install the PEIS-kernel if you have not already
+   done so. 
+
+1. Compile and install these interface files:
+
+   make 
+   sudo make install
+
+2. Add these lines to the startup of your LISP program:
+
+   (load "/usr/local/peislisp/peislisp")
+   (peisk::initialize "<name of your program here>")
+
+   That's it. If you want to pass other arguments to your 
+
+3. There is no step three.

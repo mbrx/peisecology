@@ -1,0 +1,12 @@
+* To compile PEISJava:
+
+> ant all
+
+* To test run:
+
+> java -jar dist/PeisJava.jar
+
+* To install PEISJava (this installs in your JRE's ext directory):
+
+> sudo ant install
+
