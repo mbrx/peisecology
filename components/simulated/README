@@ -1,0 +1,64 @@
+
+   simulated
+-----------------
+
+This is a component which acts as generic low-fidelity simulation of
+"real" PEIS components.  
+
+The behaviour of this component (and the behavior that we should
+expect all PEIS components to mimic) is as follows: 
+
+(1) The component starts up in an initialization phase that takes
+trivial time. (If it would take longer, then it would publis the value
+"initializing" to the "status" tuple). This consists of the parsing of
+the commandline options and establishing
+
+  (a) A set of input tuples that it expects to be configured as
+  meta-tuples and that it expects to read /continously/
+  These tuples must be updated with a given periodicity (given as
+  commandline argument) or they are deemed as outdated. 
+
+  (b) A set of parameter tuples that is expects to read, but that does
+  not need to be updated with any periodicity. These tuples can be
+  given a value EITHER as a direct tuple value, OR by a meta-tuple
+  mechanism.  
+
+  (c) A set of output tuples that it will write to with a given
+  periodicity -- but it will only write if all of the constraints
+  above has been given
+
+  (d) A set of actuation tuples. Each actuation tuple tries to get to
+  a specific "state" when given a goal tuple. It takes a given amount
+  of time change the state and it stays in a state until asked to move
+  to another state. Use this to eg. simulate movement between
+  different rooms. 
+
+(2) After initialization the component runs in a continous loop and
+verifies that it has all the inputs and/or parameter values. If any
+value is missing then it publishes the state "waiting" and the
+cause.names as a list of the missing inputs. Otherwise it publishes
+the state "running". 
+
+(3) Each actuator tuple T has a value T.reqState that it reads
+requests to update the state from. The current state is shown in
+T.currState and the T.status tuple shows if the actuator is working
+('running') or waiting for new commands ('waiting'). 
+
+(4) If there is an error in the execution of the component it
+publishes the state "error". This currenly happens if you set the
+tuple "provoke-error" to any value. 
+
+   PEIS-init based simulations
+---------------------------------
+In the example sub directories you will find examples that show a
+simulation with this component can run. Most importantly, look in
+example2 to see how PEIS-init can be used to simulate different
+hosts. 
+
+
+
+   Compiling instructions
+---------------------------------
+To compile this program:
+
+run "cmake .", then run "make".

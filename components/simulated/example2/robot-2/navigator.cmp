@@ -1,0 +1,9 @@
+# navigator.cmp
+# Fake navigator component
+Name=navigator
+Id=+3
+Exec='sim_generic $PEISINIT'
+ExtraArguments='--peis-name navigator --input odometry 1.0 --input localization 5.0 --parameter goal'
+InitState=off
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

@@ -1,0 +1,9 @@
+# laser.cmp
+# Fake laser component
+Name=laser
+Id=+2
+Exec='sim_generic $PEISINIT'
+ExtraArguments='--peis-name laser --output laser 0.5 --parameter settings'
+InitState=off
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

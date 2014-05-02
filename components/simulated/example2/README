@@ -1,0 +1,110 @@
+   PEIS-init based simulations
+---------------------------------
+A slightly more advanced example where we will use peisinit and to
+fake a couple of different components that are to be run on different
+fake computers.
+
+This is done by having one peis-init directory for each
+"computer". These are found in the subdirectories "robot-1", "robot-2"
+an "server" here.  
+
+We recall that inside each computer (real or simulated) there should
+be one peisinit process running and one peisinit directory. The
+peisinit directory contains a set of .cmp files that specify the
+different components that can run on this computer. In the simulation
+we have created .cmp files that correpond to eg. odometry, laser,
+navigator components and that all use the sim_generic program for
+their actual execution. 
+
+The PEIS-init for each simulated compute all start here with an ID
+that is a multiple of 100 and each component is given an offset from
+this ID. (See eg. robot-1/odometry.cmp that has Id=+1 in it)
+
+Available components:
+
+robot-1   (id: 100+)
+  peisinit
+  odometry   +1
+  laser      +2
+  navigator  +3
+
+robot-2   (id: 200+)
+  peisinit
+  odometry  +1
+  kinnect   +2
+  navigator +3
+
+server    (id: 300+)
+  peisinit
+  slam      +1
+
+   Scripts:
+----------------
+There are a number of scripts given for this example that simplifies
+the execution of experiments. Some of these scripts are done in the
+normal /bash/ scripting language, while some of them are done in the
+scripting language /tuplescript that is included with the
+PEIS-kernel. The later language is currently under development and
+will be documented more extensively at a later stage. For now, you can
+safely rely on the 'set', 'set_meta' and 'sleep' commands in
+it. (There also is a full functional language implementaion with
+garbage collection in it, but these features are not relevant for
+these experiments.
+
+boot.sh		# Starts peisinit on all hosts
+conf1.ts	# Runs robot-1 using SLAM
+conf2.ts	# Runs robot-1 using kinnect based localization from robot-2
+stop.ts		# Shuts down all components
+
+   Booting up the components
+-------------------------------
+When a real computer that runs the PEIS is booted it should
+automatically start PEIS-init. This is typically done in
+/etc/rc.local. For the simulation, however, we provide a shell script
+that starts a PEIS-init process for each of the simulated
+computers. See boot.sh
+
+   Starting/stopping components
+------------------------------------
+To start/stop a component a tuple should be written to the PEIS-init
+that monitors this component. To eg. start the odometry component
+above, write the value 'on' to the tuple '100.components.odometry.reqState'
+
+In the first of the configurations scripts, conf1.ts, this is done to
+start/stop the different components. 
+
+   Making configurations
+-------------------------------
+To configure a given component we need to provide an source for each
+input. This is done by setting the corresponding /meta-input/ tuple to
+point to the input source using the normal meta tuple concept of
+PEIS. Ie. a value '(META $ID $NAME)' where $ID is the PEIS-id of the
+component that has the data and $NAME is the tuplename that should be
+read as the source. 
+
+When doing this programatically, use the given API function to create
+a meta tuple instead of by hardcoding in the value above. When doing
+it from tuplescript use the 'set_meta' function. 
+
+
+
+   Visualising configurations and statuses
+-----------------------------------------------
+
+Tupleview has a built in mechanism for visualizing the state of the
+PEIS ecology that is accessed through the "ecology view" tab. In this
+view you can select to show subscriptions, to group components by
+their hostnames (ie. the simulated computers will appear in different
+groups) and to draw it once or multiple times using 'dot' as the
+backend rendering platform. 
+
+To visualize timelines on what is happening, the tool 'tuplemonitor'
+can be used. This tool accepts a list of labels and tuples to
+monitor. For each such tuple it makes a subscription to the PEIS
+ecology and remembers the SYMBOLIC values that the tuple had. It
+continously generates a timeline tuple that describes the evolution of
+these values using the EasyTimeline syntax from the wikipedia
+framework. Tupleview can visualize this syntax direcly if you have the
+'ploticus' tools installed on your machine. See tupleview/README for
+more details. 
+

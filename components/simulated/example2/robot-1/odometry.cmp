@@ -1,0 +1,9 @@
+# odometry.cmp
+# Fake odometry
+Name=odometry
+Id=+1
+Exec='sim_generic $PEISINIT'
+ExtraArguments='--peis-name odometry --output odometry 0.5'
+InitState=off
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

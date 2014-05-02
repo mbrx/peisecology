@@ -1,0 +1,22 @@
+Status monitor:
+
+This is a simple component that can monitor the state of one or more
+PEIS components and output an updating timeline for visualization by
+the tupleview. It relies on the EasyTimeline format of tupleview for
+the actual visualization.
+
+To compile this template:
+
+run "cmake .", then run "make".
+
+To use it, do:
+
+status_monitor --monitor <heading1> <id1> <name1> --monitor <heading2> <id2> <name2>  ...
+
+This will create a timeline with the labels heading1, heading2, ... on
+separate rows and with the corresponding values/timepoints of the
+tuples id1:name1 id2:name2 etc. 
+
+TODO: In future, track any components based on names or other
+criterias.
+

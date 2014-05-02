@@ -1,0 +1,17 @@
+This is an example scenario showing how a laser producer, odometry
+producer and a SLAM consumer is running. 
+
+launch.sh      # script for starting experiment
+configure.ts   # script for setting up the configuration
+make-error.ts  # Makes one of the components produce an error
+stop.ts        # Shuts down the components
+
+Note that all scripts that ends with .ts should be run through the
+PEIS commandline scripting language "tuplescript", if you have
+compiled and installed the latest peiskernel with the default prefix,
+then it is /usr/local/bin/tuplescript, and the .ts files already
+contain the right unix commandline interpreter. Otherwise just do:
+
+tuplescript ./configure.ts 
+
+

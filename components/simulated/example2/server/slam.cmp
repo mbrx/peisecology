@@ -1,0 +1,9 @@
+# slam.cmp
+# Fake slam component
+Name=slam
+Id=+1
+Exec='sim_generic $PEISINIT'
+ExtraArguments='--peis-name slam --input mi-odometry 2.0 --input mi-rangeReadings 2.0 --output localization 2.0'
+InitState=off
+SpawnDelay=3.0
+semantics='(<semantic description here>)'

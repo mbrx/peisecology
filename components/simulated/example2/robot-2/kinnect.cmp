@@ -1,0 +1,9 @@
+# kinnect.cmp
+# Fake kinnect component
+Name=kinnect
+Id=+2
+Exec='sim_generic $PEISINIT'
+ExtraArguments='--peis-name kinnect --output laser 1.0'
+InitState=off
+SpawnDelay=3.0
+semantics='(<semantic description here>)'
