@@ -1,0 +1,31 @@
+2004-09-24: 	Project started
+
+2009-02-23:	List of changes for next commit
+	- New "magicID" propagated in routing information
+	- Automatically killing/reviving hosts with new magicID
+	- metricCost multiplier for non loopback connections
+	- Triggering the failure ack hooks for packages when closing a connection
+	- Added seqno field to tuples prevenintg duplicate or out-of-order tuples from beeing inserted.
+
+2009-02-25:	New version 0.4.4.1
+	- Bandwidth improvements in more restrictive use of query host
+	- Heuristic for broadcasting initial hostInfo, reduces setup bandwidth significantly
+	- Misc. CPU optimisations
+
+2009-04-02:
+	- Updated all tuple/peiskernel_mt functions to use const parameters when suitable.
+
+2009-05-19:
+	- Major changes involving implementation of a new connection management mechanism
+	- Improved documentation
+	- New mechanism for stacking multiple acknowledgement hook requests
+
+2009 - 2011:
+	- Lots of changes, see svn changelog instead
+
+2011-05-26:
+	- Heuristic for determining if a given IPv4 address is reachable,
+	relying on correct use of IANA private network definitions and
+	assuming that all public networks are reachable through routing
+	(possible through a NAT).
+	- 

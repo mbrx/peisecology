@@ -1,0 +1,89 @@
+Make some tuples x-peis/boolean
+
+
+Urgent: adapt the timeout lengths for retransmissions based on average 
+time receive them. (This is important for bluetooth!)
+
+
+Let the routingTable use the connection with fewest currently queued
+packages (we need multiple entires in the global routing table for
+this... or iterate over each connections routingTable) 
+
+Include number of (actual) connections in the broadcasted information..
+
+
+
+
+
+
+
+
+
+
+* Protocoll imcompatible changes (to be implemented for next major version)
+
+  * KnownHostInfo
+
+      - Fullname should only be component name.
+
+      - New field for PID.
+
+  * Tuples: Add a "flags" field.
+
+      - Semaphore
+
+      - Tuple values are queued in order, triggered when arrived, or
+      only care about latest value.
+
+      - Tuples sequence number
+
+* How to reduce bandwidth
+
+  * General
+
+    - Smooth out "spikes" by adding small random variations in service
+   periods.
+
+  * Routing bandwidth
+
+    - Split the routing into a separate routing only part (id&seq = 2+2 bytes, send often) and another hostinfo part (send seldom)
+
+    - Keep one routing table from each neighbour. Merge into ones own
+   routing table.
+
+    - Routing part, concatenate many pieces of routing information
+   (alt. send only to neighbours but complete routing table)
+
+    - Resend routing table at a slow but fixed interval. Do immediate
+   changes when new hosts added/removed from routing table.
+
+ * Subscriptions
+
+   - Debug that initial send of subscription  to new all hosts works
+
+   - Much more seldom resending of information (5-10 minutes).
+
+   - Remove subscriptions to hosts 0that have disappeared (am i already
+   doing this, christmas checks?)
+
+* Bugs to look for
+
+   - Components/tuples disappearing randomly (caused by missed routing packages?)
+
+* Other
+
+  - Implement "estimated package loss" by looking at sequence numbers
+   of incomming packages along each link.
+
+  - (Re)Implement using "pending" connections for TCP connection attemts.
+
+  - Use protocollVersion and networkString also in the UDP broadcasts.
+
+  - unsubscribeIndirectTuple
+
+   - When peisk(mt)_defaultStringTuple is called, if the tuple exists, data in
+   the tuple is marked as old -- probably shouldn't be.  The
+   peisk(mt)_tupleExists function is the problem.  This function probably
+   shouldn't mark data as old, since when one calls it one hasn't looked at the
+   data.
+

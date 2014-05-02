@@ -1,0 +1,55 @@
+\documentclass{article}
+
+\newcommand{\tn}{\bf}
+
+\begin{document}
+\section*{Specification of Interface to 3D visualisation of environment}
+
+Any agent participating in the peis ecology can contribute with 
+information of the physical contents of the rooms. All information 
+is stored in the tuplespace, typically using the peis providing the 
+information as the owner for the tuple. The visualisation tool continously 
+queries the tuplespace for all relevant objects and visualizes them. In 
+case there are tuples under more than one owner describing the contents 
+of the room all these objects will be visualized. 
+
+\noindent
+The basic operation of the visualisation tool is as follows: 
+On startup it connects to the tuplespace and subscribes to the
+{\tn environment} tuple described below with wildcard as owner. 
+After all other initialization routines it repeates the steps below.
+\begin{enumerate}
+\item Each {\tn environment} tuple is treated as a whitespace separated
+list of named objects in the world. 
+\item For each new named object {\tn name} a subscription is made to 
+{\tn (name.property, owner)} where owner comes from the corresponding
+{\sc environment} tuple and property are all applicable properties for the
+object.
+\item The properties of each object is queried using {\tt peisk\_getTuple}
+and the object is drawn in the world. If an object is selected by 
+the user additional tuple values (see below) is also subscribed to and
+displayed.
+
+\end{enumerate}
+
+These are the tuples that are relevant for all objects.
+\begin{description}
+\item[environment] Contains a whitespace separated list of named objects identified in the room. Example ``chair0 table42 Emil''. All tuples
+referenced below as {\tn name.property} is instanced as eg. {\tn chair0.property}.
+\item[name.kind] As literal string describing the object and the model used for this object. Valid values include:
+\begin{center} \tn chair, table, sofa, bookshelf, tv, loadspeakers, light, peoplebot, amigobot, pioneer, human, wall, floor, ceiling \end{center}
+Example: {\tn chair0.kind = chair, Emil.kind = pioneer}
+\item[name.position] A string containing the xyz posisition of the {\em base} of the object (lowermost point) represented as a string with three
+printed real numbers giving the position in meters inside the global coordinate system. \\ Example: {\tn chair0.position = 2.0 -1.0 0.0}
+\item[name.size] Gives the size of the unrotated object in meters. \\ Example: {\tn table42.size = 1.0 1.0 0.5}
+\item[name.rotation] Gives the rotation of the object measured in {\em radians} as the three rotations {\em pan-tilt-yaw} and given in that order. \\
+Example: {\tn chair0.rotation = 0.5 0.0 0.0}
+\item[name.colour] A string giving the name of a colour that modulates the colour given for visualization. 
+Example: {\tn chair0.colour = yellow}
+\item[colourname.rgb] Gives the rgb values for colour strings (see above). \\ Example: {\tn yellow.rgb = 1.0 1.0 0.0}
+\item[name.extra] Contains a whitespace separated list of additional properties to display for this object to the user as text strings. 
+Example: {\tn \\ chair0.extra = ``'' \\ Emil.extra = status velocity \\ Emil.status = waiting \\ Emil.velocity = 0.0 0.0 0.0}
+
+\end{description}
+
+\end{document}

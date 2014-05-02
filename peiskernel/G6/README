@@ -1,0 +1,12 @@
+This is the PEIS-kernel middleware for the Ecologies of Physically
+Embedded Intelligent Systems project. For a description of this
+project and it's goals see http://www.aass.oru.se/~peis
+
+To install this middleware and a few sample applications to test it
+read the file INSTALL. 
+
+Remember that you also probably want to download and install a couple
+of real PEIS components that can achive some functionalties. If you
+want to write your own components please take a look under the samples
+directory to find examples of how to use the API functions.
+

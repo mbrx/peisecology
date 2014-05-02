@@ -1,0 +1,24 @@
+This directory contain the different generations of the
+peiskernel. The intention of the different generations are to allow
+for older softwares to keep working without updates and, sometimes, to
+allow for a stable and an unstable release of the kernel. 
+
+Each generation is kept as a separate branch and all modifications
+within a given generation should be API compatible (but not binary
+compatible), requiring only a recompilation of softwares to work with
+an updated PEIS kernel release.
+
+New versions inside a given generation are NOT required to be network
+compatible with older version, and softwares linked against the
+peiskernel will give a warning message when they note that they are
+out of date (this is visisble to them only if they can see the version
+number of other components).
+
+- G6: This is the current generation that should be used in RUBICON
+- and in all other projects started 2011 and later.
+
+- G5: Development version. Currently only used in PEIS Android
+- G4: Only for setups older than 2010
+- G3: For archive purposes only. Do not use
+
+

@@ -1,0 +1,25 @@
+To install run the following commands:
+
+# To setup the compilation environment etc.
+./configure     
+
+# To compile and install the peiskernel 
+cd peiskernel
+make
+# If you have sudo, otherwise get root and do make install
+sudo make install 
+cd ..
+
+# To compile everything else
+make
+sudo make install
+
+
+Note: If you have downloaded this sourcecode directly from the
+subversion repositories you may need to run ./autogen.sh before begining.
+
+If you want to generate the documentation for the PEIS-kernel you can
+do so by running the command "doxygen" if you have it installed.
+
+
+

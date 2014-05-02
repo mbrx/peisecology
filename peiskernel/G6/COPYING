@@ -1,0 +1,12 @@
+Although all of the Ecologies of PEIS project are released under an
+OpenSource licence there exists some technical restrictions to
+licence different files as GNU LGPL, GNU GPL or GNU FDL depending on
+if they are libraries, progamfiles or documentation. Unless otherwise
+noted all documentation are released under the GNU FDL. Since all
+three of these licencses are GPL compatible this should not pose any
+problems for distributiors. 
+
+Since this PEIS-kernel distribution includes both library files, program files
+and documentation we have in each file annoted the exact licence under
+which it is released. See the files COPYING.GPL, COPYING.LGPL or
+COPYING.FDL for each respective licence. 

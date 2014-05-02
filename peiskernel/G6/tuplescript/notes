@@ -1,0 +1,78 @@
+
+let x "foo"                # This is a local variable, not a tuple
+set $kernel.id:x "foo"     # This is a tuple entered into our tuplespace
+set 100:$x boo
+
+if $kernel.id {
+  echo "foo" newline
+} else {
+  echo "moo" newline
+}
+
+subscribe 100:foo
+blocking
+echo %100.foo
+
+
+subscribe -1:foo
+if @-1:foo {
+  echo "These exists someone with a foo tuple!"
+  echo-n "He is PEIS:" echo .owner@-1:foo
+}
+
+echo %100.$foo
+
+
+for x in @-1.kernel.name {
+  echo .owner eval x
+}
+
+Introducing local variables:
+
+ * No pointers allowed *
+ 1. Clone the value on assignment
+ 2. Free when the lexical closure expires
+
+ - More code to add
+ - Another construct required for getValue
+ - How do we clone a resultset? (new peis function)
+ + Possible to use functions
+ + Tidier not to polute the tuplespace with local computations
+ + For loops become possible
+
+ Lexical binding or dynamic binding?
+   Dynamic binding is hackish
+   Dynamic binding provides a simple parameter mechanism
+
+ Lexical binding with no nested functions
+   No environments needed
+
+Lambda closures
+  Requires environments
+
+  - Functions contains a pointer to their environment (MUST)
+  - Need to memory manage environments.
+     - Just use reference counting for now (possibly add GC'ing later. Easy if they all are allocated on a special stack)
+  - Any value (except functions) will still only belong to either (a) a currently evaluating expression or (b) one single environment
+
+  - How do we clone a function?
+
+Semantics for variable assignments
+  - Assignements always create a fresh Value object on the heap
+  - All Value objects on the heap are unique to ONE variable... (hmm?)
+  - Function Value objects contain a _reference_ to a Function object (Many Values can point to the same object)
+
+
+value objects: may/may not be on the heap. (Default not). 
+   - If it is already on the heap, and then gets assigned to a variable. Keep it on the heap
+   - If it is not on the heap, and is assigned to a variable. Clone it and put it on the heap + free it. Equivalent to just putting it there!
+   - Function values: point to a unique (!) function struct.
+variables: points to a location on the heap that contains a Value object
+
+
+let fn lambda (arg1 arg2) using (g0 g1 g2) { 
+    let g0 add g0 arg1
+    let g1 add g2 arg2 
+}
+(fn 1 2)
+

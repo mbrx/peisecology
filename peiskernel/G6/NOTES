@@ -1,0 +1,20 @@
+Adding structured data _inside_ tuples.
+---------------------------------------
+
+This can be done using JSON as a light-way representation. 
+Add JSON parsing to the PEIS kernel. 
+
+Advantages: 
+
+Provides richer representation capabilities inside the individual tuples. 
+
+When we add complex search queries this gives this gives better ways of representing them
+
+Hierachy of tuples to be represented as complex JSON data
+---------------------------------------------------------
+
+Let a tuple higher up in a hierachy be represented as a JSON objekt that contains all of it's children (plus possible it's own data?)
+
+Advantage:  Now all the advanced queries can be done on the root level to find complex hosts!
+
+Disadvantage: This breaks how tupleview handles images with the "isClickable" etc tuples (maybe??)

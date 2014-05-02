@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ -z $1 ] ; then
+  echo "Usage: $0 <number of masters>"
+  exit 0
+fi
+
+for i in `seq $1` ; do
+  echo "Starting $i"
+  sleep 3
+  peismaster --peis-connect 127.0.0.1:8000 --peis-auto > logs/$i.txt &
+  #simplesensor --peis-connect 127.0.0.1:8000 > logs/$i.txt &
+done

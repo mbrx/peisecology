@@ -1,0 +1,104 @@
+
+======================================================================
+               About the PEIS-kernel network protocoll
+======================================================================
+
+0.0	About this document
+---------------------------
+
+The working version of this document should always be in the
+subversion directory of the PEIS-kernel. If neccessary, a Wiki version
+of this document can also be posted on the AASS wiki. But always make
+sure to synchornize the editing of these two documents with each
+other. The major reason for this is: (1) To correctly associate the
+protocoll used by different version of the PEIS kernel deployed and in
+the SVN and (2) to automatically ship it with all official release of
+the PEIS kernel.
+
+
+1.0	Layered structure of the PEIS kernel
+--------------------------------------------
+
+2.0	Network related services
+--------------------------------
+
+2.1	Routing Tables:
+
+A routing table is a hashtable matching peis ID's to routing
+information (routingInfo). This information contains the number of
+hops to the target, as well as a monotonically increasing sequence
+number. There exits two sets of routing tables in each PEIS. 
+
+      - Global routing table: This is the "true" routing table used by
+      this PEIS and associates to each ID a connection on which
+      packages should be sent. It also contains the estimated number
+      of hops needed to reach the target. 
+
+      - Connection specific routing tables: Each connection has a
+      routing table associated to it. This is a copy of the global
+      routing table of the neighbour belonging to this specific
+      connection. By merging the routing tables from all current
+      connections, it is possible to compute the optimal global
+      routing table. 
+
+Periodically, using PEISK_ROUTE_BROADCAST_PERIOD (default 10 seconds),
+each PEIS sends a copy of it's routing table to it's direct
+neighbours. If the routing data is large (more than 200 hosts), then
+the routing table data is split into multiple pages. 
+
+During this periodic, all global routes that are outdated (hops>250)
+are checked by incrementing their hops. When hops reaches 253 (ie,
+after 3x10 second periods) we delete the host permanently.
+
+
+When receiving routing pages the different routing pages are merged
+and when the last table is received, the receiving hosts connection
+specific routing table is updated according to the merged pages. 
+
+   (1) Mark each connection-route as outdated (250)
+   (2) Write the metric information from the received pages for each connection-route
+   (3) Go through all connection-routes and verify against global
+   routing table.
+       (a) If this connection was already used since before, check
+        that new metric is still good (better than all other
+        routes). Update to new metric, or to metric/connection from another
+        connection.
+       (b) Otherwise, check if this metric is better than the current
+       global metric. If it is, then change or add this route to global.
+   (4) For connection-routes that was not updated in this page:
+        (a) Remove from connection-route.
+        (b) See if they should be marked as outdated in global
+        routing table (no other connection has a link to them) or if
+        they should be updated point to another connection.
+
+Finally, recheck which connection cluster we belong to since routing
+information may have changed. 
+
+
+2.2	ClusterID:
+
+Each PEIS component have a property "clusterID" which uniquely
+identifies which network cluster it is currently running on. 
+
+Invariant:
+	- components A and B have the same cluster ID if and only if
+	there exists a route (possibly passing through
+	other components) between A and B. 
+
+To implement cluster ID's we use the following:
+   A.clusterId is the smallest ID that we have a non-outdated route
+   to.
+
+2.3	Establishing connections
+
+Whenever a host is seen in the broadcasts that have a different
+clusterID than us, then we attempt to make a connection to him.
+
+
+3.0	Other services
+----------------------
+
+3.1	Time synchoronization:
+
+3.2	Tuple space:
+

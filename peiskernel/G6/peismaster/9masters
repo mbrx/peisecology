@@ -1,0 +1,23 @@
+#!/bin/sh
+# This is a simple bash script that launches a number of peismaster
+# components and logs them in separate log files.
+# The primary purpose of this is just or debugging!
+# To read the outputs of the log files in real time, with the correct
+# interleaving of what each component communicates use: 
+#
+# tail -f logs/*.txt
+
+EXTRA_ARGS="$2 $3 $4 $5 $6 $7 $8"
+echo "Starting $1 peismasters with arguments: $EXTRA_ARGS"
+
+if [ -z $1 ] ; then
+  echo "Usage: $0 <number of masters>" 
+  exit 0
+fi
+
+for i in `seq -f '%04g' $1` ; do
+  echo "Starting $i"
+  sleep 1
+  #peismaster --peis-connect 127.0.0.1:8000 --peis-auto > logs/$i.txt &
+  peismaster --peis-id 1$i $EXTRA_ARGS > logs/$i.txt &
+done

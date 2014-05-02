@@ -1,0 +1,74 @@
+#
+# This is an example of tuple values describing the environment. Use "simpledb" to load it into the 
+# tuple space by giving eg. the command "simpledb load example.db"
+#
+
+owner -1      # Publish data in our own database
+hold          # Keep running database peis so it can be used by others. Quit by giving it a CTRL-C
+
+set environment "chair0 chair1 Emil wallN wallS wallE wallW"
+
+# Standard values for colours
+set white.rgb     "1.0 1.0 1.0"
+set normal.rgb    "1.0 1.0 1.0"
+set alert.rgb     "1.0 1.0 0.0"
+
+#
+# The furniture
+#
+
+set chair0.kind      chair
+set chair0.position  "0.0 2.0 0.0"
+set chair0.size      "0.5 0.5 1.0"
+set chair0.rotation  "0.0 0.0 0.0"
+set chair0.colour    normal
+set chair0.extra     " "
+
+set chair1.kind      chair
+set chair1.position  "2.0 2.0 0.0"
+set chair1.size      "0.5 0.5 1.0"
+set chair1.rotation  "0.0 0.0 0.0"
+set chair1.colour    normal
+set chair1.extra     " "
+
+#
+# The robot
+#
+set Emil.kind      pioneer
+set Emil.position  "2.0 2.0 0.0"
+set Emil.size      "0.5 0.5 1.0"
+set Emil.rotation  "0.0 0.0 0.0"
+set Emil.colour    "normal"
+set Emil.extra     "status"
+set Emil.status    waiting
+
+#
+# Walls around the room
+#
+set wallN.kind      wall
+set wallN.position  "0.0 0.0 0.0"
+set wallN.size      "4.0 0.1 1.0"
+set wallN.rotation  "0.0 0.0 0.0"
+set wallN.colour    "normal"
+set wallN.extra     ""
+
+set wallS.kind      wall
+set wallS.position  "0.0 7.0 0.0"
+set wallS.size      "4.0 0.1 1.0"
+set wallS.rotation  "0.0 0.0 0.0"
+set wallS.colour    "normal"
+set wallS.extra     ""
+
+set wallE.kind      wall
+set wallE.position  "0.0 7.0 0.0"
+set wallE.size      "0.1 7.0 1.0"
+set wallE.rotation  "0.0 0.0 0.0"
+set wallE.colour    "normal"
+set wallE.extra     ""
+
+set wallW.kind      wall
+set wallW.position  "4.0 7.0 0.0"
+set wallW.size      "0.1 7.0 1.0"
+set wallW.rotation  "0.0 0.0 0.0"
+set wallW.colour    "normal"
+set wallW.extra     ""
