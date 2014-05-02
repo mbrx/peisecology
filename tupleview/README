@@ -1,0 +1,7 @@
+About the generations:
+
+The generation numbers of tupleview should match the generation number of the PEIS kernel that you are currently using. 
+
+- G6: Use this tupleview version for RUBICON and for all other projects started after 2011
+
+- G6-oldgtk: Use this tupleview version only if you are using an older linux installation with GTK 2.20 or earlier. (Examples include Ubuntu 10.04)

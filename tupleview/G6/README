@@ -1,0 +1,24 @@
+Tupleview
+---------
+
+Used for visualising tuples. For more information see the 
+Wiki pages for the EcologiesOfPeisProject or ask Mathias,
+
+Dependencies
+------------
+
+To render graphs properly (used eg. in the EcologyView) tupleview
+requires the external program "dot" as found in the package
+"graphviz". If this program is not install these graphs will just be
+empty. 
+
+To render tuples in the EasyTimeline format (eg. as used in Wikipedia)
+you need the external program "ploticus" as well as "EasyTimeline.pl"
+(the later is included in the tupleview sources and should be
+installed automatically under /usr/local/share/tupleview/)
+
+One extra constraint on the EasyTimeline tuples are that they _must_
+begin with the characters "# timeline" (remove citation marks). 
+
+
+
