@@ -21,7 +21,7 @@
 
 /** \page TupleGenerator Tuple generator
     A test program that produces fake sensor readings (tuples). Also
-    servers as a minimalisitic example of how to use the
+    serves as a minimalisitic example of how to use the
     PeisKernel. It also demonstartes the use of the with_ack_hook
     functionality for receiving callbacks when a tuple have been
     received or when a timeout have been received, when sending tuples
@@ -111,7 +111,8 @@ int main(int argc,char **args) {
 	/*with_ack_hook(tuple_acked,NULL,{
 	    peisk_setStringTuple(tuplename,str);
 	    });*/
-	peisk_appendStringTuple(peisk_id,tuplename,str);	
+	//peisk_appendStringTuple(peisk_id,tuplename,str);	
+	peisk_setStringTuple(tuplename,str);
       }
       t0 += freq;
     }

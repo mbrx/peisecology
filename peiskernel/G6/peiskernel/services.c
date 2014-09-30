@@ -1542,6 +1542,8 @@ int peisk_hook_acknowledgments(int port,int destination,int sender,int datalen,v
 	    if(qpackage->nHooks) {
 	      /*printf("Found a package with %d ackHooks. datalen: %d data: %s\n",qpackage->nHooks,ntohs(qpackage->package.header.datalen),qpackage->package.data);*/
 	      PEISK_ASSERT(qpackage->nHooks<PEISK_MAX_ACKHOOKS,("Found a queue package with %d hooks\n",qpackage->nHooks));
+
+	      peiskernel.ackHookFailureType=eAckHookFailureNone;
 	      for(i=0;i<qpackage->nHooks;i++)	      
 		(qpackage->hook[i])(1,ntohs(qpackage->package.header.datalen),&qpackage->package,qpackage->hookData[i]);
 	    }

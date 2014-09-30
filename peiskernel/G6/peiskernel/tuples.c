@@ -2,7 +2,7 @@
     \brief Contains all internal services implementing the tuplespaces
 */
 /*
-    Copyright (C) 2005 - 2012  Mathias Broxvall
+    Copyright (C) 2005 - 2014  Mathias Broxvall
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -606,12 +606,13 @@ void peisk_pushTupleAckHook(int success,int datalen,PeisPackage *package,void *u
       peisk_insertFailedTuple(tuple,dest);
       return;
     }
-    
-    if(peisk_pushTuple(tuple, ntohl(package->header.destination)) != 0) {
-      /*printf("inserting into failed tuples list\n");*/
+
+    /* We will retry sending package only if it was not intentionally dropped. */
+    if(peiskernel.ackHookFailureType == eAckHookFailureRED ||
+       peiskernel.ackHookFailureType == eAckHookFailureTooManyPackages ||       
+       peisk_pushTuple(tuple, ntohl(package->header.destination)) != 0) {
       peisk_insertFailedTuple(tuple,dest);
-    } /*else
-	printf("Resend ok\n");*/
+    }
   }
 }
 

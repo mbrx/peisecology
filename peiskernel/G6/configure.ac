@@ -1,7 +1,7 @@
 # Process this file with autoconf to produce a configure script.
 AC_INIT
 AC_CANONICAL_TARGET
-AM_INIT_AUTOMAKE([peis], [0.6.0.6], [mbl@aass.oru.se])
+AM_INIT_AUTOMAKE([peis], [0.6.0.7], [mbl@aass.oru.se])
 AC_CONFIG_SRCDIR([peiskernel/peiskernel.c])
 AM_CONFIG_HEADER(config.h)
 AC_CONFIG_MACRO_DIR([m4])

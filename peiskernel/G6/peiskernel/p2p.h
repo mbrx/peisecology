@@ -268,6 +268,9 @@ typedef struct PeisPeriodicInfo {
 /** The different types of routing of packages available in the P2P network */
 typedef enum { ePeisLinkPackage=0, ePeisBroadcastPackage, ePeisDirectPackage } PeisPackageType;
 
+/** The different types of ackHookFailure types (see peiskernel_private.h) */
+enum { eAckHookFailureNone=0, eAckHookFailureRED, eAckHookFailureDeadConnection, eAckHookFailureTooManyPackages, eAckHookFailureTooManyRetries };
+
 /** Describes the header used in all linklevel connections.
     IntegerCertain fields of this structure should always occur
     in network byte order and there care must be taken whenever

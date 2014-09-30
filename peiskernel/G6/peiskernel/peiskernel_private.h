@@ -160,7 +160,9 @@ typedef struct PeisKernel {
       connections to remote (not on same CPU) hosts except those
       explicitly setup with command line arguments. */
   char isLeaf;
-  unsigned char padding2[3];
+  /** Filled when an AckHook is called in the P2P layer with the specific type of error (or success) */
+  char ackHookFailureType;
+  unsigned char padding2[2];
 
   /** Hashtable giving routing information for all destinations. */
   PeisHashTable *routingTable;

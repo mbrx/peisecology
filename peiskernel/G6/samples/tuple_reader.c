@@ -107,7 +107,7 @@ int main(int argc,char **args) {
 
 
   while(peisk_isRunning()) { 
-    peisk_wait(100000);
+    peisk_wait(1000);
 
     /* All normal tuples are collected allowing wildcards etc. Hence
        the use of a resultSet */

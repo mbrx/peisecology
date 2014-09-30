@@ -2,7 +2,7 @@
     kernel
 */
 /*
-    Copyright (C) 2005 - 2012  Mathias Broxvall
+    Copyright (C) 2005 - 2014  Mathias Broxvall
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -222,6 +222,7 @@ void peisk_connection_processOutgoing(PeisConnection *connection) {
 	  /* If there was an acknowledgement hook registered for this package,
 	     invoke it */
 	  if(qpackage->hook) {
+	    peiskernel.ackHookFailureType=eAckHookFailureTooManyRetries;
 	    PEISK_ASSERT(qpackage->nHooks<PEISK_MAX_ACKHOOKS,("Found a queue package with %d hooks\n",qpackage->nHooks));
 	    for(i=0;i<qpackage->nHooks;i++)
 	    (qpackage->hook[i])(0,qpackage->package.header.datalen,&qpackage->package,qpackage->hookData[i]);
@@ -1088,6 +1089,7 @@ int peisk_connection_sendPackage(int id,PeisPackageHeader *package,int datalen,v
   if(connection->nQueuedPackages[priority] > PEISK_MAX_QUEUE_SIZE) {
     if(peisk_printLevel & PEISK_PRINT_PACKAGE_ERR)
       fprintf(stderr,"peisk:peisk_connection_sendPackage: too many packages, dropping new packages");
+    peiskernel.ackHookFailureType = eAckHookFailureTooManyPackages;
     goto sendPackage_failed;
   }
 
@@ -1104,6 +1106,7 @@ int peisk_connection_sendPackage(int id,PeisPackageHeader *package,int datalen,v
     if(peisk_printLevel & PEISK_PRINT_PACKAGE_ERR)
       /* Note - this is not exactly an error, remove this in the future... */
       fprintf(stderr,"peisk:peisk_connection_sendPackage: RED drop");
+    peiskernel.ackHookFailureType = eAckHookFailureRED;
     goto sendPackage_failed;
   }
 
@@ -1118,6 +1121,9 @@ int peisk_connection_sendPackage(int id,PeisPackageHeader *package,int datalen,v
  sendPackage_failed:
   /* Failure, alert hook */
   if(qpackage->nHooks) {
+
+    /* Note: peiskernel.ackHooKFailureType *have* been initialized before reaching here */
+
     /* Trigger failure hook(s) for this package */
     PEISK_ASSERT(qpackage->nHooks<PEISK_MAX_ACKHOOKS,("Found a queue package with %d hooks\n",qpackage->nHooks));
     for(i=0;i<qpackage->nHooks;i++)
@@ -1311,6 +1317,8 @@ void peisk_closeConnection(int id) {
 	printf("Giving up on ackID %x, closed connection\n",ntohl(qpackage->package.header.ackID));
       if(qpackage->hook) {
 	/* Trigger failure hook for this package */
+	peiskernel.ackHookFailureType=eAckHookFailureDeadConnection;
+
 	PEISK_ASSERT(qpackage->nHooks<PEISK_MAX_ACKHOOKS,("Found a queue package with %d hooks\n",qpackage->nHooks));
 	for(i=0;i<qpackage->nHooks;i++)
 	  (qpackage->hook[i])(0,qpackage->package.header.datalen,&qpackage->package,qpackage->hookData[i]);
