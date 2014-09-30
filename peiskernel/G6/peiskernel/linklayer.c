@@ -441,7 +441,7 @@ int peisk_verifyConnectMessage(PeisConnection *connection,PeisConnectMessage *me
     fprintf(stderr,"Consider updating your peiskernel or running on a private network!\n");
   }
   if(message->version != peisk_protocollVersion) {
-    printf("protocoll %d if wrong\n",message->version);
+    fprintf(stderr,"incomming connection with incorrect protocoll version %d\n",message->version);
     return -1;
   }
   
