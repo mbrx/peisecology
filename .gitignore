@@ -1,0 +1,59 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.lo
+.deps
+
+# Temporary files #
+###################
+*~
+*.temp
+
+# Latex temporary files #
+#########################
+*.aux
+*.log
+*.lof
+*.lot
+*.toc
+*.bbl
+*.blg
+*.make
+*.fls
+*.nav
+*.out
+*.pdfsync
+*.snm
+*.vrb
+*.fls
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
