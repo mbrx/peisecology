@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdint.h>
 #include "peiskernel/peiskernel_mt.h"
 #include "peiskernel/hashtable.h"
 #include "tokenizer.h"
@@ -25,9 +26,9 @@
 #endif
 
 /** \brief Maximum number of tokens that can fit into the tokenizer pointer buffer */
-int maxTokens;
+intptr_t maxTokens;
 /** \brief Current number of tokens in the tokenizer pointer buffer */
-int nTokens;
+intptr_t nTokens;
 /** \brief Constant time lookup table from token ID to the actual token strings */
 char **tokenPointers;
 /** \brief Hashtable (~ O(log n) time) lookup of strings to token IDs */
@@ -55,7 +56,7 @@ void initTokenizer() {
 int insertToken(char *str) {
   void *val;
   if(peisk_hashTable_getValue(tokenizer_ht,(void*)str,&val) == 0) 
-    return (int) val;
+    return (intptr_t) val;
   if(nTokens == maxTokens) {
     printf("note: Tokenizer resizing token buffer\n");
     maxTokens *= 2;
