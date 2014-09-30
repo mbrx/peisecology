@@ -75,6 +75,7 @@ void tuple_acked(int success,int dataLen,PeisPackage *package,void *user) {
 int main(int argc,char **args) {
   char *tuplename;
   int len; char *value;
+  double freq=1.0;
 
   /* If you set this to 1 then we will use indirect writes instead */
   int indirect=0;
@@ -82,6 +83,7 @@ int main(int argc,char **args) {
   if(argc < 2) printUsage(stderr,argc,args);
   tuplename = args[1];
   if(argc > 1 && strcmp(args[1],"--help") == 0) printUsage(stderr,argc,args);
+  if(argc > 2) freq = atof(args[2]);
 
   /* Initialize everything */
   peisk_initialize(&argc,args);
@@ -96,7 +98,7 @@ int main(int argc,char **args) {
   peisk_setStringTuple(tuplename,"");
   while(peisk_isRunning()) { 
     peisk_step(); usleep(100); 
-    if(peisk_gettimef() > t0 + 1.0) {
+    if(peisk_gettimef() > t0 + freq) {
       char str[256];
       //snprintf(str,sizeof(str),"data-%d:%d",peisk_id,cnt++);
       snprintf(str,sizeof(str),"%d ",cnt++);
@@ -111,7 +113,7 @@ int main(int argc,char **args) {
 	    });*/
 	peisk_appendStringTuple(peisk_id,tuplename,str);	
       }
-      t0 += 1.0; // = peisk_gettimef();
+      t0 += freq;
     }
   }
   peisk_shutdown();
