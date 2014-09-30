@@ -17,7 +17,7 @@
 
 #ifndef WITH_READLINE
 /* The below macro utilizes gcc's extension 'statement expression' */
-#define readline(prompt) ({char str[256]; printf("%s",prompt); gets(str); strdup(str);})
+#define readline(prompt) ({char str[256]; printf("%s",prompt); fgets(str,sizeof(str),stdin)?strdup(str):NULL;})
 #define add_history(something) {}
 #else
 #include <readline/readline.h>
