@@ -171,3 +171,36 @@ To test, run a peismaster and start tupleview:
 
 You should see the peismaster component in tupleview.
 
+
+PEISJava
+--------
+
+You need the ant build system to make and install the PEISJava binding:
+
+> sudo apt-get install ant
+
+To make install:
+
+> cd bindings/PEISJava/G6.1
+> ant all
+> sudo ant install
+
+To test, run:
+
+> java -jar dist/PeisJava.jar
+
+
+Documentation
+=============
+
+To generate API docs, use doxygen:
+
+> cd peiskernel/G6
+> doxygen doxygen.conf
+
+You will now find the HTML docs in peiskernel/G6/docs/html/index.html
+
+After having generated docs with doxygen, yuo can install man pages:
+
+> cd peiskernel/G6
+> sudo ./install-manpages.sh
