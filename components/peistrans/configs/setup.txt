@@ -1,0 +1,30 @@
+Mapping from raw sensor values to ON/OFF for the XBee sensor network in Angen
+(last calibrated on: July 22, 2015)
+
+1. livingroom.pir01: ON >= 1000; OFF <= 10 --> threshold := 500
+2. kitchen.pir01: ON >= 800; OFF <= 10 --> threshold := 400
+3. kitchen.cupboard01.switch01: ON >= 400; OFF <= 120 --> threshold := 250
+4. kitchen.chair01.pressure01: ON >= 400; OFF <= 100 --> threshold := 300
+5. kitchen.chair02.pressure01: ON >= 800; OFF <= 500 --> threshold := 700
+6. livingroom.chair02.pressure01: ON >= 550; OFF <= 350 --> threshold := 450
+
+not calibrated:
+1. livingroom.pir02: ON >= 889; OFF <= 1 --> threshold := 400 (impossible to test by myself)
+2. livingroom.chair01.pressure01: ON >= 500; OFF <= 310 --> threshold := 400 (impossible to test by myself)
+3. livingroom.chair01.pressure02: ON >= 500; OFF <= 350 --> threshold := 420 (impossible to test by myself)
+
+4. kitchen.microwave01.switch01: ON >= 400; OFF <= 60 --> threshold := 200 (exploded)
+5. kitchen.fridge01.switch01: ON >= 400; OFF <= 70 --> threshold := 200 (not working - need to change battery)
+
+
+
+
+
+
+
+
+
+
+
+
+

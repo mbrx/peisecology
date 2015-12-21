@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+
+<!-- README -->
+<!-- peistrans config for: Jonas WSN setup in Angen -->
+<!-- last updated on: 08/10/2014 -->
+
+<!-- Jonas WSN rules for sensors: -->
+<!-- xbees.[ID].ad0 = luminosity -->
+<!-- xbees.[ID].ad1 = (open_close) switch -->
+<!-- xbees.[ID].ad2 = pir -->
+<!-- xbees.[ID].ad3 = temperature -->
+<!-- xbees.[ID].ad4 = pressure -->
+
+<rules>
+	<match key="xbees">
+		<rewrite key="*" repl="angen1"/>
+
+		<!-- xbees.101.ad2 = angen1.livingroom.pir01 (TV) -->
+		<match key="101">
+			<rewrite key="101" repl="livingroom"/>		
+			<match key="ad2">
+				<rewrite key="*" repl="pir01"/>
+				<eval expr='x' type='double'/>
+				<!-- <eval expr='x > 400'/> -->
+			</match>
+		</match>
+
+		<!-- xbees.102.ad2 = angen1.livingroom.pir02 (sofa) -->
+		<match key="102">
+			<rewrite key="102" repl="livingroom"/>		
+			<match key="ad2">
+				<rewrite key="*" repl="pir02"/>
+				<eval expr='x' type='double'/>
+				<!-- <eval expr='x > 400'/> -->
+			</match>
+		</match>
+
+		<!-- xbees.106.ad4 = angen1.livingroom.chair01.pressure01 -->
+		<!-- (grey armchair windows side) -->
+		<match key="106">
+			<rewrite key="106" repl="livingroom"/>		
+			<match key="ad4">
+				<rewrite key="*" repl="chair01.pressure01"/>
+				<eval expr='x' type='double'/>
+				<!-- <eval expr='x > 580'/> -->
+			</match>
+		</match>
+		
+		<!-- xbees.103.ad4 = angen1.livingroom.chair01.pressure02 -->
+		<!-- (grey armchair windows side) -->
+		<match key="103">
+			<rewrite key="103" repl="livingroom"/>		
+			<match key="ad4">
+				<rewrite key="*" repl="chair01.pressure02"/>
+				<eval expr='x' type='double'/>
+				<!-- <eval expr='x > 580'/> -->
+			</match>
+		</match>
+
+		<!-- xbees.109.ad4 = angen1.livingroom.chair02.pressure01 -->
+		<!-- (armchair center side) -->		
+		<match key="109">
+			<rewrite key="109" repl="livingroom"/>		
+			<match key="ad4">
+				<rewrite key="*" repl="chair02.pressure01"/>
+				<eval expr='x' type='double'/>
+				<!-- <eval expr='x > 580'/> -->
+			</match>
+		</match>
+
+		<!-- xbees.105.ad2 = angen1.kitchen.pir01 -->
+		<match key="105">
+			<rewrite key="105" repl="kitchen"/>		
+			<match key="ad2">
+				<rewrite key="*" repl="pir01"/>
+				<eval expr='x' type='double'/>
+				<!-- <eval expr='x > 400'/> -->
+			</match>
+		</match>
+
+		<!-- xbees.104.ad4 = angen1.kitchen.chair01.pressure01 -->
+		<!-- (chair center-windows side) -->
+		<match key="104">
+			<rewrite key="104" repl="kitchen"/>		
+			<match key="ad4">
+				<rewrite key="*" repl="chair01.pressure01"/>
+				<eval expr='x' type='double'/>
+				<!-- <eval expr='x > 580'/> -->
+			</match>
+		</match>
+
+		<!-- xbees.108.ad4 = angen1.kitchen.chair02.pressure01 -->
+		<!-- (chair center-fridge side) -->
+		<match key="108">
+			<rewrite key="108" repl="kitchen"/>		
+			<match key="ad4">
+				<rewrite key="*" repl="chair02.pressure01"/>
+				<eval expr='x' type='double'/>
+				<!-- <eval expr='x > 580'/> -->
+			</match>
+		</match>
+
+		<!-- NOT CHECKED -->
+		<!-- xbees.107.ad0 = WSNAngen.bathroom.luminosity01 -->
+		<match key="107">
+			<rewrite key="107" repl="bathroom"/>		
+			<match key="ad0">
+				<rewrite key="*" repl="luminosity01"/>
+				<eval expr='x' type='double'/>
+			</match>
+			<!-- xbees.107.ad2 = angen1.bathroom.pir01 -->
+			<match key="ad2">
+				<rewrite key="*" repl="pir01"/>
+				<eval expr='x' type='double'/>
+			</match>
+			<!-- xbees.107.ad3 = WSNAngen.bathroom.temperature01 -->
+			<match key="ad3">
+				<rewrite key="*" repl="temperature01"/>
+				<eval expr='x' type='double'/>
+			</match>
+		</match>
+		<!-- END OF NOT CHECKED -->
+
+		<!-- xbees.121.ad1 = angen1.kitchen.microwave01.switch01 -->
+		<match key="121">
+			<rewrite key="121" repl="kitchen.microwave01"/>
+			<match key="ad1">
+				<rewrite key="*" repl="switch01"/>
+				<eval expr='x' type='double'/>
+				<!-- <eval expr="x > 400"/> -->
+			</match>
+		</match>
+
+		<!-- xbees.122.ad1 = angen1.kitchen.fridge01.switch01 -->
+		<match key="122">
+			<rewrite key="122" repl="kitchen.fridge01"/>
+			<match key="ad1">
+				<rewrite key="*" repl="switch01"/>
+				<eval expr='x' type='double'/>
+				<!-- <eval expr="x > 400"/> -->
+			</match>
+		</match>
+
+		<!-- xbees.123.ad1 = angen1.kitchen.cupboard01.switch01 -->
+		<match key="123">
+			<rewrite key="123" repl="kitchen.cupboard01"/>
+			<match key="ad1">
+				<rewrite key="*" repl="switch01"/>
+				<eval expr="x" type="double"/>
+				<!-- <eval expr="x > 400"/> -->
+			</match>
+		</match>
+
+	</match>
+</rules>

@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+
+<rules>
+	<match key="angen1">
+		<rewrite key="*" repl="angen1_bool"/>
+
+		<!-- angen1.livingroom -->
+		<match key="livingroom">
+			<rewrite key="livingroom" repl="livingroom"/>
+            		
+			<!-- livingroom.pir01 -->		
+			<match key="pir01">
+				<rewrite key="*" repl="pir01"/>
+				<eval expr='x > 500'/>
+			</match>
+
+			<!-- livingroom.pir02 -->
+            <match key="pir02">
+				<rewrite key="*" repl="pir02"/>
+				<eval expr='x > 400'/>
+			</match>
+
+            <!-- livingroom.chair01.pressure01 & pressure02 -->
+            <match key="chair01">
+                <rewrite key="chair01" repl="chair01"/>
+                <match key="pressure01">
+				    <rewrite key="*" repl="pressure01"/>
+				    <eval expr='x > 400'/>
+                </match>
+                <match key="pressure02">
+				    <rewrite key="*" repl="pressure02"/>
+				    <eval expr='x > 420'/>
+                </match>
+			</match>
+
+            <!-- livingroom.chair02.pressure01 -->	
+            <match key="chair02">
+                <rewrite key="chair02" repl="chair02"/>
+                <match key="pressure01">
+				    <rewrite key="*" repl="pressure01"/>
+				    <eval expr='x > 700'/>
+                </match>
+			</match>
+		</match>
+
+		<!-- angen1.kitchen -->
+		<match key="kitchen">
+			<rewrite key="kitchen" repl="kitchen"/>
+
+            <!-- kitchen.pir01 -->		
+			<match key="pir01">
+				<rewrite key="*" repl="pir01"/>
+				<eval expr='x > 400'/>
+			</match>
+
+            <!-- kitchen.chair01.pressure01 -->
+            <match key="chair01">
+               	<rewrite key="chair01" repl="chair01"/>
+                <match key="pressure01">
+				    <rewrite key="*" repl="pressure01"/>
+				    <eval expr='x > 300'/>
+                </match>
+			</match>
+
+            <!-- kitchen.chair02.pressure01 -->
+            <match key="chair02">
+                <rewrite key="chair02" repl="chair02"/>
+                <match key="pressure01">
+				    <rewrite key="*" repl="pressure01"/>
+				    <eval expr='x > 700'/>
+                </match>
+			</match>
+
+            <!-- kitchen.microwave01.switch01 -->
+            <match key="microwave01">
+                <rewrite key="microwave01" repl="microwave01"/>
+			    <match key="switch01">
+				    <rewrite key="*" repl="switch01"/>
+				    <eval expr='x > 200'/>
+                </match>
+			</match>
+
+            <!-- kitchen.fridge01.switch01 -->
+            <match key="fridge01">
+                		<rewrite key="fridge01" repl="fridge01"/>
+			    	<match key="switch01">
+				    <rewrite key="*" repl="switch01"/>
+				    <eval expr='x > 200'/>
+                		</match>
+			</match>
+
+			<!-- kitchen.cupboard01.switch01 -->
+			<match key="cupboard01">
+				<rewrite key="cupboard01" repl="cupboard01"/>
+				<match key="switch01">
+				    <rewrite key="*" repl="switch01"/>
+				    <eval expr='x > 250'/>
+				</match>
+			</match>
+		</match>
+	</match>
+
+	<match key="RFID">
+		<rewrite key="RFID" repl="angen1_bool"/>
+		<match key="Tag">
+			<rewrite key="Tag" repl="kitchen"/>
+
+			<!-- RFID.Tag.e0070000071dada6 = Plate -->
+			<match key="e0070000071dada6">
+				<rewrite key="e0070000071dada6" repl="plate01.rfid01"/>
+               	<eval expr='x > 0'/>
+           	</match>
+
+            <!-- RFID.Tag.e0070000071dae3c = Glass -->
+            <match key="e0070000071dae3c">
+                <rewrite key="e0070000071dae3c" repl="glass01.rfid01"/>
+                <eval expr='x > 0'/>
+            </match>
+            	
+			<!-- RFID.Tag.e00700001a855aba = Bottle -->
+            <match key="e00700001a855aba">
+                <rewrite key="e00700001a855aba" repl="bottle01.rfid01"/>
+                <eval expr='x > 0'/>
+            </match>
+		</match>
+    </match>
+</rules>
