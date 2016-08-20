@@ -128,17 +128,21 @@ Compiling the peiskernel requires some dependencies - assuming an
 Ubuntu-like distro:
 
 > sudo apt-get install libtool
+
 > sudo apt-get install autotools-dev
 
 To compile, run some configuration scripts first:
 
 > cd peiskernel/G6
+
 > ./autogen.sh
+
 > ./configure
 
 Then, compile and install:
 
 > make
+
 > sudo make install
 
 To let your system know of the new library in the current session, you
@@ -161,8 +165,11 @@ For tupleview, you need the following dependencies:
 To install:
 
 > cd tupleview/G6
+
 > ./autogen.sh
+
 > make
+
 > sudo make install
 
 To test, run a peismaster and start tupleview:
@@ -182,7 +189,9 @@ You need the ant build system to make and install the PEISJava binding:
 To make install:
 
 > cd bindings/PEISJava/G6.1
+
 > ant all
+
 > sudo ant install
 
 To test, run:
@@ -196,6 +205,7 @@ Documentation
 To generate API docs, use doxygen:
 
 > cd peiskernel/G6
+
 > doxygen doxygen.conf
 
 You will now find the HTML docs in peiskernel/G6/docs/html/index.html
@@ -203,4 +213,5 @@ You will now find the HTML docs in peiskernel/G6/docs/html/index.html
 After having generated docs with doxygen, yuo can install man pages:
 
 > cd peiskernel/G6
+
 > sudo ./install-manpages.sh
